@@ -1,0 +1,7 @@
+.env
+bot.db*
+.venv/
+__pycache__/
+.claude/
+.agents/
+skills-lock.json
