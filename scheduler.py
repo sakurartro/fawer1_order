@@ -7,7 +7,6 @@ from html import escape
 from aiogram.exceptions import TelegramAPIError
 
 import db
-from config import TEST_BOOST, TEST_BOOST_USER
 from draw import pick_winners
 
 
@@ -52,8 +51,6 @@ async def run_draw(bot):
         db.add_winner(p["id"], by_id[uid], place, now)
     db.close_period()
     db.open_period(now)
-    if TEST_BOOST_USER:  # в начале периода, чтобы накрутка была видна в статистике
-        db.boost(db.period()["id"], TEST_BOOST_USER, TEST_BOOST)
     if not ids:
         return
     winners = ", ".join(link(by_id[u]) for u in ids)

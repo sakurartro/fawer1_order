@@ -123,17 +123,6 @@ def add_count(period_id, user):
     )
 
 
-def boost(period_id, username, n):
-    w = conn.execute(
-        "SELECT user_id, name FROM winners WHERE username=? COLLATE NOCASE ORDER BY drawn_at DESC LIMIT 1", (username,)
-    ).fetchone()
-    if w:
-        conn.execute(
-            "INSERT INTO counts VALUES (?,?,?,?,?) ON CONFLICT(period_id, user_id) DO UPDATE SET cnt=cnt+?",
-            (period_id, w["user_id"], username, w["name"], n, n),
-        )
-
-
 def top(period_id, n):
     return conn.execute(
         "SELECT * FROM counts WHERE period_id=? ORDER BY cnt DESC, user_id LIMIT ?", (period_id, n)

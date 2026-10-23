@@ -17,7 +17,3 @@ COOLDOWN = 10    # секунд между засчитанными сообще
 
 def fmt(ts: int) -> str:
     return datetime.fromtimestamp(ts, TZ).strftime("%d.%m.%Y %H:%M")
-
-# ТЕСТ: перед каждым розыгрышем накручиваем этому пользователю (победителю прошлого розыгрыша) сообщения. Для отключения: TEST_BOOST_USER = None
-TEST_BOOST_USER = "merrrzostttttt"  # @username победителя прошлого розыгрыша
-TEST_BOOST = 100
