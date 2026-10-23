@@ -9,7 +9,7 @@ load_dotenv()
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 ADMIN_PASSWORD = os.environ["ADMIN_PASSWORD"]
 TZ = ZoneInfo(os.getenv("BOT_TZ", "Europe/Moscow"))
-DB_PATH = "bot.db"
+DB_PATH = os.getenv("DB_PATH", "bot.db")
 
 MIN_LEN = 5      # короче — сообщение не засчитывается
 COOLDOWN = 10    # секунд между засчитанными сообщениями одного человека
